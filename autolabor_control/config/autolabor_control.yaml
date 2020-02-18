@@ -4,7 +4,7 @@ autolabor_pro1:
     type: joint_state_controller/JointStateController
     publish_rate: 50
 
-  joint1_position_controller:
-    type: effort_controllers/JointPositionController
+  joint1_velocity_controller:
+    type: effort_controllers/JointVelocityController
     joint: joint1
     pid: {p: 100.0, i: 0.01, d: 10.0}
