@@ -1,1 +1,3 @@
 # autolabor_simulation
+
+可以在gazebo中顯示模型，並開啟控制service，需改變joint及controller的type
