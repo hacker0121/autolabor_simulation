@@ -1,0 +1,58 @@
+<robot name="autolabor_description">
+  <link name="base_link" />
+  <link name="model_link">
+    <visual>
+      <origin
+        xyz="0 0.2 0.2883"
+        rpy="0. 1.57 -1.57" />
+      <geometry>
+        <mesh
+          filename="package://autolabor_description/meshes/untitled.dae" scale="0.001 0.001 0.001" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.96 0.81 0.36 1" />
+      </material>
+    </visual>
+    <collision>
+     <origin
+        xyz="0 0.2 0.2883"
+        rpy="0. 1.57 -1.57" />
+      <geometry>
+        <mesh
+          filename="package://autolabor_description/meshes/autolabor_pro1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="10"/>
+      <origin xyz="0 0.2 0.2883" rpy="0. 1.57 -1.57"/>
+      <inertia ixx="0.000633" ixy="0.000002" ixz="0.000006" iyy="0.000523" iyz="0" izz="0.000999" />
+    </inertial>
+  </link>
+
+  <joint name="model_to_base" type="continuous">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="model_link" />
+  </joint>
+
+  <transmission name="tran1">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="model_to_base">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor1">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <gazebo>
+    <static>true</static>
+    <selfCollide>true</selfCollide>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+    <robotNamespace>/autolabor_pro1</robotNamespace>
+  </plugin>
+  </gazebo>
+</robot>
