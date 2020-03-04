@@ -3,11 +3,11 @@
   <link name="base_link">
     <visual>
       <origin
-        xyz="0 0.2 0.2883"
+        xyz="0 0.2 0.289"
         rpy="0. 1.57 -1.57" />
       <geometry>
         <mesh
-          filename="package://autolabor_description/meshes/untitled.dae" scale="0.001 0.001 0.001" />
+          filename="package://autolabor_description/meshes/autolabor_pro1.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material
         name="">
@@ -49,8 +49,6 @@
   </transmission>
 
   <gazebo>
-    <static>true</static>
-    <selfCollide>true</selfCollide>
     <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
     <robotNamespace>/autolabor_pro1</robotNamespace>
     <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
