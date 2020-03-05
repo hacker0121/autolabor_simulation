@@ -3,11 +3,11 @@
   <link name="base_link">
     <visual>
       <origin
-        xyz="0 0.2 0.3"
-        rpy="0. 1.57 -1.57" />
+        xyz="0 0 0"
+        rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://autolabor_description/meshes/autolabor_pro1.stl" scale="0.001 0.001 0.001" />
+          filename="package://autolabor_description/meshes/body.stl" />
       </geometry>
       <material
         name="">
@@ -17,32 +17,115 @@
     </visual>
     <collision>
      <origin
-        xyz="0 0.2 0.3"
-        rpy="0. 1.57 -1.57" />
+        xyz="0 0 0"
+        rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://autolabor_description/meshes/autolabor_pro1.stl" scale="0.001 0.001 0.001"/>
+          filename="package://autolabor_description/meshes/body.stl" />
       </geometry>
     </collision>
     <inertial>
       <mass value="10"/>
-      <origin xyz="0 0.2 0.3" rpy="0. 1.57 -1.57"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
       <inertia ixx="0.000633" ixy="0.000002" ixz="0.000006" iyy="0.000523" iyz="0" izz="0.000999" />
     </inertial>
   </link>
+  <link name="front_link">
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://autolabor_description/meshes/frontwheel.stl" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.96 0.81 0.36 1" />
+      </material>
+    </visual>
+    <collision>
+     <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://autolabor_description/meshes/frontwheel.stl" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.000026" ixy="0" ixz="0" iyy="0.000227" iyz="0" izz="0.000227" />
+    </inertial>
+  </link>
+  <link name="back_link">
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://autolabor_description/meshes/backwheel.stl" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.96 0.81 0.36 1" />
+      </material>
+    </visual>
+    <collision>
+     <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://autolabor_description/meshes/backwheel.stl" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.000026" ixy="0" ixz="0" iyy="0.000227" iyz="0" izz="0.000227" />
+    </inertial>
+  </link>
 
-  <joint name="joint1" type="continuous">
+  <joint name="fixed_joint" type="fixed">
     <origin xyz="0 0 0" rpy="0 0 0" />
     <parent link="world" />
     <child link="base_link" />
+  </joint>
+  <joint name="joint1" type="revolute">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <axis xyz="1 0 0" />
+    <limit upper="0" lower="-1.57" velocity="10" effort="1" />
+    <parent link="base_link" />
+    <child link="front_link" />
+  </joint>
+  <joint name="joint2" type="revolute">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <axis xyz="1 0 0" />
+    <limit upper="0" lower="-1.57" velocity="10" effort="1" />
+    <parent link="base_link" />
+    <child link="back_link" />
   </joint>
 
   <transmission name="tran1">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="joint1">
-      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
     </joint>
     <actuator name="motor1">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="tran2">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="joint2">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor2">
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
