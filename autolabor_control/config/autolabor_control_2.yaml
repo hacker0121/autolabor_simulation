@@ -4,21 +4,17 @@ autolabor_pro1:
     type: joint_state_controller/JointStateController
     publish_rate: 50
 
-  joint1_controller:
-    type: velocity_controllers/JointVelocityController
-    joint: frjoint
+  front_controller:
+    type: position_controllers/JointGroupPositionController
+    joints:
+      - frjoint
+      - fljoint
 
-  joint2_controller:
-    type: velocity_controllers/JointVelocityController
-    joint: fljoint
-
-  joint3_controller:
-    type: velocity_controllers/JointVelocityController
-    joint: brjoint
-
-  joint4_controller:
-    type: velocity_controllers/JointVelocityController
-    joint: bljoint
+  back_controller:
+    type: velocity_controllers/JointGroupVelocityController
+    joints: 
+      - brjoint
+      - bljoint
 
   gazebo_ros_control:
     pid_gains:
