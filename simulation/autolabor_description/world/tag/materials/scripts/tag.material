@@ -1,0 +1,13 @@
+material tag/one
+{
+  technique
+  {
+    pass
+      {
+        texture_unit
+        {
+          texture tag1.png
+        }
+      }
+  }
+}

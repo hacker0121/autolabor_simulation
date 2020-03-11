@@ -1,9 +1,9 @@
 <launch>
-  <rosparam file="$(find autolabor_control)/config/autolabor_control_2.yaml" command="load"/>
+  <rosparam file="$(find autolabor_control)/config/autolabor_control_2_cam.yaml" command="load"/>
 
   <!-- load the controllers -->
   <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
-    output="screen" ns="/autolabor_pro1" args="joint_state_controller front_controller back_controller"/>
+    output="screen" ns="/autolabor_pro1" args="joint_state_controller left_controller right_controller"/>
 
   <!-- convert joint states to TF transforms for rviz, etc -->
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"

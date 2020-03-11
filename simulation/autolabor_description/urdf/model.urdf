@@ -1,0 +1,252 @@
+<?xml version="1.0" ?>
+<robot name="autolabor_description">
+  <joint name="dummy_joint" type="fixed">
+    <parent link="odom"/>
+    <child link="base_link"/>
+    <origin xyz="0 0 0.15" rpy="0 0 0"/>
+  </joint>
+  <joint name="cam_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="camera"/>
+    <origin xyz="0 0.8 0.5" rpy="0 1.5707 0"/>
+  </joint>
+  <joint name="fljoint" type="revolute">
+    <parent link="base_link"/>
+    <child link="flw"/>
+    <origin rpy="3.14159 -1.57079  3.14159" xyz="-0.23  0.22 0"/>
+    <axis xyz="0  0 1"/>
+    <limit effort="10" lower="-1.79769e+308" upper="1.79769e+308" velocity="10"/>
+  </joint>
+  <joint name="frjoint" type="revolute">
+    <parent link="base_link"/>
+    <child link="frw"/>
+    <origin rpy="3.14159 -1.57079  3.14159" xyz="0.23  0.22 0"/>
+    <axis xyz="0  0 1"/>
+    <limit effort="10" lower="-1.79769e+308" upper="1.79769e+308" velocity="10"/>
+  </joint>
+  <joint name="bljoint" type="revolute">
+    <parent link="base_link"/>
+    <child link="blw"/>
+    <origin rpy="3.14159 -1.57079  3.14159" xyz="-0.23 -0.22 0"/>
+    <axis xyz="0  0 1"/>
+    <limit effort="10" lower="-1.79769e+308" upper="1.79769e+308" velocity="10"/>
+  </joint>
+  <joint name="brjoint" type="revolute">
+    <parent link="base_link"/>
+    <child link="brw"/>
+    <origin rpy="3.14159 -1.57079  3.14159" xyz="0.23 -0.22 0"/>
+    <axis xyz="0  0 1"/>
+    <limit effort="10" lower="-1.79769e+308" upper="1.79769e+308" velocity="10"/>
+  </joint>
+  <link name="odom"/>
+  <link name="base_link">
+    <inertial>
+      <mass value="1.0"/>
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <inertia ixx="0.00197627" ixy="0" ixz="0" iyy="0.00074732" iyz="0" izz="0.00251257"/>
+    </inertial>
+    <collision>
+      <origin rpy="0  0  0" xyz="0    0    0"/>
+      <geometry>
+        <box size="0.4 0.7 0.16"/>
+      </geometry>
+    </collision>
+    <visual>
+      <origin rpy="0  0  0" xyz="0    0    0"/>
+      <geometry>
+        <box size="0.4 0.7 0.16"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="camera">
+    <inertial>
+      <mass value="0.001"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="0.000166667" iyy="0.000166667" izz="0.000166667" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.1 0.1 0.1"/>
+      </geometry>
+    </collision>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.1 0.1 0.1"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="flw">
+    <inertial>
+      <mass value="0.5"/>
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <inertia ixx="3.235e-05" ixy="0" ixz="0" iyy="3.235e-05" iyz="0" izz="6.12e-05"/>
+    </inertial>
+    <collision>
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <cylinder length="0.05" radius="0.15"/>
+      </geometry>
+    </collision>
+    <visual>
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <cylinder length="0.05" radius="0.15"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="frw">
+    <inertial>
+      <mass value="0.5"/>
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <inertia ixx="3.235e-05" ixy="0" ixz="0" iyy="3.235e-05" iyz="0" izz="6.12e-05"/>
+    </inertial>
+    <collision>
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <cylinder length="0.05" radius="0.15"/>
+      </geometry>
+    </collision>
+    <visual>
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <cylinder length="0.05" radius="0.15"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="blw">
+    <inertial>
+      <mass value="0.5"/>
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <inertia ixx="3.235e-05" ixy="0" ixz="0" iyy="3.235e-05" iyz="0" izz="6.12e-05"/>
+    </inertial>
+    <collision>
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <cylinder length="0.05" radius="0.15"/>
+      </geometry>
+    </collision>
+    <visual>
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <cylinder length="0.05" radius="0.15"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="brw">
+    <inertial>
+      <mass value="0.5"/>
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <inertia ixx="3.235e-05" ixy="0" ixz="0" iyy="3.235e-05" iyz="0" izz="6.12e-05"/>
+    </inertial>
+    <collision>
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <cylinder length="0.05" radius="0.15"/>
+      </geometry>
+    </collision>
+    <visual>
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <cylinder length="0.05" radius="0.15"/>
+      </geometry>
+    </visual>
+  </link>
+  <transmission name="tran1">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="frjoint">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor1">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="tran2">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="fljoint">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor2">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="tran3">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="brjoint">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor3">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="tran4">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="bljoint">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor4">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <gazebo reference="base_link">
+    <selfCollide>true</selfCollide>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+  </gazebo>
+  <gazebo reference="flw">
+    <selfCollide>true</selfCollide>
+    <mu1>10</mu1>
+    <mu2>10</mu2>
+  </gazebo>
+  <gazebo reference="frw">
+    <selfCollide>true</selfCollide>
+    <mu1>10</mu1>
+    <mu2>10</mu2>
+  </gazebo>
+  <gazebo reference="blw">
+    <selfCollide>true</selfCollide>
+    <mu1>10</mu1>
+    <mu2>10</mu2>
+  </gazebo>
+  <gazebo reference="brw">
+    <selfCollide>true</selfCollide>
+    <mu1>10</mu1>
+    <mu2>10</mu2>
+  </gazebo>
+
+
+  <gazebo reference="camera">
+    <sensor type="camera" name="camera">
+      <update_rate>30.0</update_rate>
+      <camera name="scaner">
+        <horizontal_fov>1.5</horizontal_fov>
+        <image>
+          <width>1080</width>
+          <height>720</height>
+          <format>R8G8B8</format>
+        </image>
+        <clip>
+          <near>0.1</near>
+          <far>10</far>
+        </clip>
+      </camera>
+      <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>30.0</updateRate>
+        <cameraName>autolabor_pro1/camera1</cameraName>
+        <imageTopicName>image_raw</imageTopicName>
+        <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+        <frameName>camera_link</frameName>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/autolabor_pro1</robotNamespace>
+      <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+    </plugin>
+  </gazebo>
+</robot>
