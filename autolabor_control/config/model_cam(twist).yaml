@@ -1,0 +1,37 @@
+autolabor_pro1:
+
+  joint_state_controller:
+    type: "joint_state_controller/JointStateController"
+    publish_rate: 50
+
+  base_controller:
+    type: "diff_drive_controller/DiffDriveController"
+    left_wheel: fljoint
+    right_wheel: frjoint
+    wheel_separation: 0.25
+    wheel_radius: 0.15
+    cmd_vel_timeout: 0.25
+    enable_odom_tf: true
+    pose_covariance_diagonal: [0.001, 0.001, 1000000.0, 1000000.0, 1000000.0, 1000.0]
+    twist_covariance_diagonal: [0.001, 0.001, 1000000.0, 1000000.0, 1000000.0, 1000.0]
+    base_frame_id: odom
+
+  gazebo_ros_control:
+    pid_gains:
+      frjoint:
+        p: 0.1
+        i: 0.1
+        d: 0
+      fljoint:
+        p: 0.1
+        i: 0.1
+        d: 0
+      brjoint:
+        p: 0.1
+        i: 0.1
+        d: 0
+      bljoint:
+        p: 0.1
+        i: 0.1
+        d: 0
+

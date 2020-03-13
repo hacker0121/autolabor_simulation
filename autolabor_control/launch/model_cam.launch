@@ -1,5 +1,5 @@
 <launch>
-  <rosparam file="$(find autolabor_control)/config/autolabor_control_2_cam.yaml" command="load"/>
+  <rosparam file="$(find autolabor_control)/config/model_cam.yaml" command="load"/>
 
   <!-- load the controllers -->
   <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"

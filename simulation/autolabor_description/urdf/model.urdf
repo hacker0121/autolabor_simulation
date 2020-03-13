@@ -14,28 +14,28 @@
     <parent link="base_link"/>
     <child link="flw"/>
     <origin rpy="3.14159 -1.57079  3.14159" xyz="-0.23  0.22 0"/>
-    <axis xyz="0  0 1"/>
+    <axis xyz="0 0 1"/>
     <limit effort="10" lower="-1.79769e+308" upper="1.79769e+308" velocity="10"/>
   </joint>
   <joint name="frjoint" type="revolute">
     <parent link="base_link"/>
     <child link="frw"/>
     <origin rpy="3.14159 -1.57079  3.14159" xyz="0.23  0.22 0"/>
-    <axis xyz="0  0 1"/>
+    <axis xyz="0 0 1"/>
     <limit effort="10" lower="-1.79769e+308" upper="1.79769e+308" velocity="10"/>
   </joint>
   <joint name="bljoint" type="revolute">
     <parent link="base_link"/>
     <child link="blw"/>
     <origin rpy="3.14159 -1.57079  3.14159" xyz="-0.23 -0.22 0"/>
-    <axis xyz="0  0 1"/>
+    <axis xyz="0 0 1"/>
     <limit effort="10" lower="-1.79769e+308" upper="1.79769e+308" velocity="10"/>
   </joint>
   <joint name="brjoint" type="revolute">
     <parent link="base_link"/>
     <child link="brw"/>
     <origin rpy="3.14159 -1.57079  3.14159" xyz="0.23 -0.22 0"/>
-    <axis xyz="0  0 1"/>
+    <axis xyz="0 0 1"/>
     <limit effort="10" lower="-1.79769e+308" upper="1.79769e+308" velocity="10"/>
   </joint>
   <link name="odom"/>
@@ -242,7 +242,6 @@
       </plugin>
     </sensor>
   </gazebo>
-
   <gazebo>
     <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
       <robotNamespace>/autolabor_pro1</robotNamespace>

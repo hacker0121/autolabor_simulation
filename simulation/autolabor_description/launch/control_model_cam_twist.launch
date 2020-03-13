@@ -14,6 +14,6 @@
     args="-urdf -model model1 -param robot_description"/>
 
   <!-- ros_control rrbot launch file -->
-  <include file="$(find autolabor_control)/launch/control_2_cam.launch"/>
+  <include file="$(find autolabor_control)/launch/model_cam(twist).launch"/>
 
 </launch>
