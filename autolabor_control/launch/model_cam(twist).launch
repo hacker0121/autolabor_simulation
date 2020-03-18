@@ -1,3 +1,4 @@
+<?xml version="1.0"?>
 <launch>
   <rosparam file="$(find autolabor_control)/config/model_cam(twist).yaml" command="load"/>
 
@@ -5,9 +6,11 @@
   <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
     output="screen" ns="/autolabor_pro1" args="joint_state_controller base_controller"/>
 
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>
+
   <!-- convert joint states to TF transforms for rviz, etc -->
-  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
-    respawn="false" output="screen">
-  </node>
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+
+  <node name="odom_to_map" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 /odom /map 30"/>
 
 </launch>
