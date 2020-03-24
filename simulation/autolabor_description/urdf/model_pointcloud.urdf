@@ -278,7 +278,7 @@
     </sensor>
   </gazebo>
   <gazebo reference="ray">
-    <sensor type="gpu_ray" name="ray">
+    <sensor type="ray" name="ray">
       <update_rate>60.0</update_rate>
       <ray>
         <scan>
@@ -288,6 +288,12 @@
             <min_angle>-3.1415</min_angle>
             <max_angle>3.1415</max_angle>
           </horizontal>
+          <vertical>
+            <samples>100</samples>
+            <resolution>1</resolution>
+            <min_angle>-1.22</min_angle>
+            <max_angle>0.3927</max_angle>
+          </vertical>
         </scan>
         <range>
           <min>0.1</min>
@@ -295,12 +301,13 @@
           <resolution>0.01</resolution>
         </range>
       </ray>
-      <plugin name="ray_controller" filename="libgazebo_ros_gpu_laser.so">
+      <plugin name="ray_controller" filename="libgazebo_ros_block_laser.so">
         <topicName>scan</topicName>
         <frameName>ray</frameName>
       </plugin>
     </sensor>
   </gazebo>
+
   <gazebo>
     <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
       <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
