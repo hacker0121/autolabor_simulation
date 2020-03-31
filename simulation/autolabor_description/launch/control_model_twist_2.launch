@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<launch>
+
+  <param name="/use_sim_time" value="true"/>
+  <node name="gazebo" pkg="gazebo_ros" type="gzserver" respawn="false" output="screen"
+  args="-e ode /home/eric/catkin_ws/src/simulation/autolabor_description/world/model.world" />
+  <node name="gazebo_gui" pkg="gazebo_ros" type="gzclient" respawn="false" output="screen"/>
+
+  <!-- Load the URDF into the ROS Parameter Server -->
+  <param name="robot_description"
+    textfile="$(find autolabor_description)/urdf/3d_model.urdf" />
+
+  <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
+  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+    args="-urdf -model model1 -param robot_description"/>
+
+  <!-- ros_control rrbot launch file -->
+  <include file="$(find autolabor_control)/launch/model_cam(twist)_2.launch"/>
+
+  <!--node name="odom_to_map" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 /odom /map 60"/-->
+
+  <node name="rqt_gui" pkg="rqt_gui" type="rqt_gui"/>
+
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find autolabor_description)/rviz/gazebo.rviz"/>
+
+</launch>

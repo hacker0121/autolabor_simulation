@@ -5,13 +5,13 @@
   base_controller:
     type: "diff_drive_controller/DiffDriveController"
     publish_rate: 50
-    left_wheel: ['bljoint', 'fljoint']
-    right_wheel: ['brjoint', 'frjoint']
-    wheel_separation: 0.45
-    wheel_radius: 0.15
+    left_wheel: 'fljoint'
+    right_wheel: 'frjoint'
+    wheel_separation: 0.55
+    wheel_radius: 0.124
     cmd_vel_timeout: 0.1
     base_frame_id: base_link
-    enable_odom_tf: false
+    enable_odom_tf: true
     pose_covariance_diagonal: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
     twist_covariance_diagonal: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 
@@ -31,19 +31,11 @@
   gazebo_ros_control:
     pid_gains:
       frjoint:
-        p: 0.1
+        p: 10
         i: 0
         d: 0
       fljoint:
-        p: 0.1
-        i: 0
-        d: 0
-      brjoint:
-        p: 0.1
-        i: 0
-        d: 0
-      bljoint:
-        p: 0.1
+        p: 10
         i: 0
         d: 0
 
