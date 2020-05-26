@@ -1,0 +1,9 @@
+<launch>
+
+  <param name="use_sim_time" value="true"/>
+
+  <include file="$(find autolabor_navigation_launch)/launch/mapping_world.launch" />
+
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find autolabor_navigation_launch)/rviz/ndt_mapping.rviz" />
+
+</launch>

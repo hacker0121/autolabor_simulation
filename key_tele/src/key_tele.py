@@ -9,7 +9,7 @@ MAX_LIN_VEL = 15
 MAX_ANG_VEL = 15
 
 LIN_VEL_STEP_SIZE = 0.1
-ANG_VEL_STEP_SIZE = 0.5
+ANG_VEL_STEP_SIZE = 0.05
 
 msg = """
 ---------------------------

@@ -1,0 +1,311 @@
+<?xml version="1.0"?>
+<robot name="autolabor_description">
+  <joint name="dummy_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="body"/>
+    <origin xyz="0 0 0.124" rpy="0 0 0"/>
+  </joint>
+  <joint name="imu_joint" type="fixed">
+    <parent link="body"/>
+    <child link="imu"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+  </joint>
+  <joint name="cam_joint" type="fixed">
+    <parent link="body"/>
+    <child link="camera"/>
+    <origin xyz="0.135 0 1.02" rpy="0 0 0"/>
+  </joint>
+  <joint name="point_joint" type="fixed">
+    <parent link="body"/>
+    <child link="point"/>
+    <origin xyz="0 0 1.25" rpy="0 0 0"/>
+  </joint>
+  <joint name="ray_joint" type="fixed">
+    <parent link="body"/>
+    <child link="ray"/>
+    <origin xyz="0.35 0 0.2" rpy="0 0 0"/>
+  </joint>
+  <joint name="fljoint" type="continuous">
+    <parent link="body"/>
+    <child link="flw"/>
+    <origin rpy="0 0 0" xyz="0.22 0.275 0.03"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+  <joint name="frjoint" type="continuous">
+    <parent link="body"/>
+    <child link="frw"/>
+    <origin rpy="0 0 0" xyz="0.22 -0.275 0.03"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+  <joint name="cjoint" type="fixed">
+    <parent link="body"/>
+    <child link="caster"/>
+    <origin rpy="0 0 0" xyz="-0.221 0 -0.056"/>
+  </joint>
+
+  <link name="base_link"/>
+  <link name="body">
+    <inertial>
+      <mass value="40"/>
+      <origin rpy="0  0  0" xyz="0 0 0"/>
+      <inertia ixx="5.95042" ixy="0" ixz="0" iyy="7.091" iyz="0" izz="2.37325"/>
+    </inertial>
+    <collision>
+      <origin rpy="0  0  0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://autolabor_description/meshes/3d_model/body.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+    <visual>
+      <origin rpy="0  0  0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://autolabor_description/meshes/3d_model/body.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="flw">
+    <inertial>
+      <mass value="5"/>
+      <origin rpy="3.141592654  0  0" xyz="0 0 0"/>
+      <inertia ixx="0.729167" ixy="0" ixz="0" iyy="0.729167" iyz="0" izz="0.625"/>
+    </inertial>
+    <collision>
+      <origin rpy="3.141592654  0  0" xyz="0  0  0"/>
+      <geometry>
+        <mesh filename="package://autolabor_description/meshes/3d_model/frw.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+    <visual>
+      <origin rpy="3.141592654  0  0" xyz="0  0  0"/>
+      <geometry>
+        <mesh filename="package://autolabor_description/meshes/3d_model/frw.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="frw">
+    <inertial>
+      <mass value="5"/>
+      <origin rpy="0  0  0" xyz="0 0 0"/>
+      <inertia ixx="0.729167" ixy="0" ixz="0" iyy="0.729167" iyz="0" izz="0.625"/>
+    </inertial>
+    <collision>
+      <origin rpy="0  0  0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://autolabor_description/meshes/3d_model/frw.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+    <visual>
+      <origin rpy="0  0  0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://autolabor_description/meshes/3d_model/frw.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="caster">
+    <inertial>
+      <mass value="5"/>
+      <origin rpy="0  0  0" xyz="0 0 0"/>
+      <inertia ixx="0.729167" ixy="0" ixz="0" iyy="0.729167" iyz="0" izz="0.625"/>>
+    </inertial>
+    <collision>
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <mesh filename="package://autolabor_description/meshes/3d_model/caster.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+    <visual>
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <mesh filename="package://autolabor_description/meshes/3d_model/caster.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="camera">
+    <inertial>
+      <mass value="0.001"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="0.00000791" iyy="0.00000124" izz="0.00000833" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.07 0.3 0.05"/>
+      </geometry>
+    </collision>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.07 0.3 0.05"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="ray"/>
+  <link name="point"/>
+  <link name="imu"/>
+
+
+  <transmission name="tran1">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="frjoint">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor1">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="tran2">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="fljoint">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor2">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <gazebo reference="base_link">
+    <mu1>1e+6</mu1>
+    <mu2>1e+6</mu2>
+  </gazebo>
+  <gazebo reference="flw">
+    <mu1>1e+6</mu1>
+    <mu2>1e+6</mu2>
+  </gazebo>
+  <gazebo reference="frw">
+    <mu1>1e+6</mu1>
+    <mu2>1e+6</mu2>
+  </gazebo>
+  <gazebo reference="caster">
+    <mu1>0</mu1>
+    <mu2>0</mu2>
+  </gazebo>
+
+  <gazebo reference="imu">
+    <gravity>true</gravity>
+    <sensor name="imu_sensor" type="imu">
+      <always_on>true</always_on>
+      <update_rate>100</update_rate>
+      <topic>__default_topic__</topic>
+      <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
+        <topicName>imu</topicName>
+        <bodyName>imu</bodyName>
+        <updateRateHZ>10.0</updateRateHZ>
+        <gaussianNoise>0.0</gaussianNoise>
+        <xyzOffset>0 0 0</xyzOffset>
+        <rpyOffset>0 0 0</rpyOffset>
+        <frameName>imu</frameName>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+  <gazebo reference="camera">
+    <sensor type="camera" name="camera">
+      <update_rate>60.0</update_rate>
+      <camera>
+        <horizontal_fov>1.5</horizontal_fov>
+        <image>
+          <width>1080</width>
+          <height>720</height>
+          <format>R8G8B8</format>
+        </image>
+        <clip>
+          <near>0.1</near>
+          <far>10</far>
+        </clip>
+      </camera>
+      <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+        <alwaysOn>true</alwaysOn>
+        <cameraName>camera1</cameraName>
+        <imageTopicName>image_raw</imageTopicName>
+        <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+        <frameName>camera</frameName>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+  <gazebo reference="point">
+    <sensor type="gpu_ray" name="point">
+      <update_rate>60.0</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>10000</samples>
+            <resolution>1</resolution>
+            <min_angle>-3.141592654</min_angle>
+            <max_angle>3.141592654</max_angle>
+          </horizontal>
+          <vertical>
+            <samples>16</samples>
+            <resolution>1</resolution>
+            <min_angle>-0.125</min_angle>
+            <max_angle>0.25</max_angle>
+          </vertical>
+        </scan>
+        <range>
+          <min>0.1</min>
+          <max>10</max>
+          <resolution>0.01</resolution>
+        </range>
+      </ray>
+      <plugin name="point_controller" filename="libgazebo_ros_velodyne_gpu_laser.so">
+        <topicName>points2</topicName>
+        <frameName>point</frameName>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+  <gazebo reference="ray">
+    <sensor type="ray" name="ray">
+      <update_rate>60.0</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>1000</samples>
+            <resolution>0.3</resolution>
+            <min_angle>-1.178097245</min_angle>
+            <max_angle>1.178097245</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.28</min>
+          <max>16</max>
+          <resolution>0.01</resolution>
+        </range>
+      </ray>
+      <plugin name="ray_controller" filename="libgazebo_ros_laser.so">
+        <topicName>scan</topicName>
+        <frameName>ray</frameName>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+  <gazebo>
+    <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
+      <alwaysOn>true</alwaysOn>
+      <updateRate>100</updateRate>
+      <leftJoint>fljoint</leftJoint>
+      <rightJoint>frjoint</rightJoint>
+      <wheelSeparation>0.55</wheelSeparation>
+      <wheelDiameter>0.248</wheelDiameter>
+      <torque>20</torque>
+      <commandTopic>cmd_vel</commandTopic>
+      <odometryTopic>odom</odometryTopic>
+      <odometryFrame>odom</odometryFrame>
+      <robotBaseFrame>base_link</robotBaseFrame>
+      <rosDebugLevel>na</rosDebugLevel>
+      <publishWheelTF>false</publishWheelTF>
+      <publishOdomTF>true</publishOdomTF>
+      <publishWheelJointState>false</publishWheelJointState>
+      <wheelAcceleration>1</wheelAcceleration>
+      <wheelTorque>50</wheelTorque>
+      <publishTf>true</publishTf>
+    </plugin>
+  </gazebo>
+
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+    </plugin>
+  </gazebo>
+
+</robot>
