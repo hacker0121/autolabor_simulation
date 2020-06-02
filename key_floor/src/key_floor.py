@@ -5,6 +5,9 @@ import tty, termios
 import rospy
 from std_msgs.msg import String
 
+class BreakoutException(Exception):
+    pass
+
 def getKey():
     tty.setraw(sys.stdin.fileno())
     rlist, _, _ = select.select([sys.stdin], [], [], 0.1)
@@ -24,16 +27,23 @@ if __name__ == "__main__":
 
     try:
         while(1):
-            key = getKey()
-            if (key == '\x03'):
-                break
-            elif key != '':
-                msg = String()
-                msg.data = key
-                pub.publish(msg)
-                print('msg pub')
-    except:
-        print('error')
+            msg = String()
+
+            while len(msg.data) != 5:
+                key = getKey()
+                if (key == '\x03'):
+                    raise BreakoutException
+                else:
+                    if len(msg.data) == 0:
+                        if key != '':
+                            msg.data = key
+                    else:
+                        if key != '':
+                            msg.data += '_' + key
+            pub.publish(msg)
+            print(msg.data)
+    except BreakoutException:
+        pass
     finally:
         msg.data = ''
         pub.publish(msg)

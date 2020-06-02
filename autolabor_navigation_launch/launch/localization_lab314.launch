@@ -40,7 +40,7 @@
       <param name="get_height" value="$(arg get_height)" />
       <param name="use_local_transform" value="$(arg use_local_transform)" />
       <param name="imu_topic" value="$(arg imu_topic)" />
-      <remap from="/points_raw" to="/sync_drivers/points_raw" if="$(arg sync)" />
+      <remap from="/points_raw" to="/filtered_points" />
       <remap from="odom_pose" to="odom" />
     </node>
   
@@ -52,7 +52,7 @@
 
     <node pkg="nodelet" type="nodelet" name="pcl_manager" args="manager" output="screen" />
     <node pkg="nodelet" type="nodelet" name="voxel_grid" args="load pcl/VoxelGrid pcl_manager" output="screen">
-      <remap from="~input"  to="points_raw" />
+      <remap from="~input"  to="velodyne_points" />
       <remap from="~output" to="filtered_points" />
       <rosparam>
         filter_field_name: z

@@ -1,14 +1,9 @@
 <launch>
   <arg name="debug"            default="true" />
-  <arg name="bag_file"         default="$(env HOME)/bag/points_raw_test1.bag" />
   
   <group if="$(arg debug)">
     <param name="use_sim_time" value="true"/>
       <!-- Static transtorm -->
-       
-    <node pkg="rosbag" type="play" name="rosbag_play_node"
-          args="--clock $(arg bag_file)" >
-    </node>
   
     <node pkg="hector_trajectory_server" type="hector_trajectory_server" name="trajectory_node">
         <remap from="trajectory" to="autolabor_odom" />
