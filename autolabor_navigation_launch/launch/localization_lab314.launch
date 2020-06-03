@@ -40,7 +40,7 @@
       <param name="get_height" value="$(arg get_height)" />
       <param name="use_local_transform" value="$(arg use_local_transform)" />
       <param name="imu_topic" value="$(arg imu_topic)" />
-      <remap from="/points_raw" to="/filtered_points" />
+      <remap from="/points_raw" to="/velodyne_points" />
       <remap from="odom_pose" to="odom" />
     </node>
   

@@ -1,9 +1,14 @@
 <launch>
   <arg name="debug"            default="true" />
-  
+  <arg name="bag_file"         default="$(env HOME)/bag/first_floor.bag" />
+
   <group if="$(arg debug)">
     <param name="use_sim_time" value="true"/>
       <!-- Static transtorm -->
+
+      <node pkg="rosbag" type="play" name="rosbag_play_node"
+          args="--clock $(arg bag_file)" >
+      </node>
   
     <node pkg="hector_trajectory_server" type="hector_trajectory_server" name="trajectory_node">
         <remap from="trajectory" to="autolabor_odom" />
@@ -16,7 +21,11 @@
 
   <node pkg="map_load" type="map_load_node" name="map_load_server" />
 
-  <node pkg="map_combine" type="map_combine_node" name="map_combine" />
+  <node pkg="map_combine" type="map_combine_node" name="map_combine">
+    <param name="grid_distant" value="7.0" />
+    <param name="leafs" value="0.2" />
+    <param name="dir" value="/home/eric/Desktop/map2/" />
+  </node>
 
   <include file="$(find autolabor_navigation_launch)/launch/localization_lab314.launch">
   </include>
